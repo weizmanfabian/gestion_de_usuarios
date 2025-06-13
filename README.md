@@ -52,7 +52,7 @@ cd gestion_de_usuarios
 
 ### 1.2 Cambiamos de rama a **docker-compose**
 ```bash
-git chekout docker-compose
+git checkout docker-compose
 ```
 
 ## Instalación y Ejecución

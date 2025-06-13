@@ -1,0 +1,7 @@
+CREATE TABLE usuarios (
+    usu_id SERIAL PRIMARY KEY,
+    usu_nombre VARCHAR(255) NOT NULL,
+    usu_email VARCHAR(255),
+    usu_created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    usu_updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

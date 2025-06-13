@@ -2,7 +2,7 @@ import "reflect-metadata";
 import app from './app';
 import { AppDataSource } from "./db";
 
-const PORT = 5000;
+const PORT = process.env.APP_PORT || 3000;
 
 function main() {
     AppDataSource.initialize()
@@ -12,6 +12,7 @@ function main() {
         })
         .catch((error) => console.error("Error during Data Source initialization:", error));
 }
+
 
 main();
 

@@ -15,6 +15,13 @@ Este proyecto es un sistema backend para la gestión de usuarios, desarrollado e
 
 ```
 gestion_de_usuarios/
+├── docker-compose.yml
+├── Dockerfile
+├── .env
+├── db/
+│   └── sql/
+│       ├── create_schema.sql
+│       └── data.sql
 ├── src/
 │   ├── controllers/       # Controladores de la aplicación
 │   │   └── user.controller.ts
@@ -35,41 +42,8 @@ gestion_de_usuarios/
 - PostgreSQL v16.0 o superior
 - npm v11.4.2 o superior
 
-## Configuración Inicial
 
-### 1. Crear Base de Datos
-
-Ejecutar en PostgreSQL: 
-```sql
-CREATE DATABASE usuarios
-    WITH
-    OWNER = postgres
-    ENCODING = 'UTF8'
-    LC_COLLATE = 'Spanish_Colombia.1252'
-    LC_CTYPE = 'Spanish_Colombia.1252'
-    TABLESPACE = pg_default
-    CONNECTION LIMIT = -1;
-```
-NOTA: Se puede también ir abrir la conexión de PostgreSql y crear una nueva base de datos con el nombre **usuarios**
-
-### 2. Crear Tabla e Insertar Datos
-
-```sql
-CREATE TABLE usuarios (
-    usu_id SERIAL PRIMARY KEY,
-    usu_nombre VARCHAR(255) NOT NULL,
-    usu_email VARCHAR(255),
-    usu_created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    usu_updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-INSERT INTO usuarios (usu_nombre, usu_email) VALUES
-('John Doe', 'john.doe@example.com'),
-('Jane Smith', 'jane.smith@example.com'),
-('Bob Johnson', 'bob.johnson@example.com');
-```
-
-### 3. Clonar el Proyecto
+### 1. Clonar el Proyecto
 
 ```bash
 git clone https://github.com/weizmanfabian/gestion_de_usuarios.git
@@ -78,25 +52,39 @@ cd gestion_de_usuarios
 
 ## Instalación y Ejecución
 
-### 1. Instalar Dependencias
+### 1. compilar proyecto
 
 ```bash
-npm install
+npm run docker:build
 ```
 
-### 2. Ejecutar en Modo Desarrollo
+### 2. levantar aplicación
 
 ```bash
-npm run dev
+npm run docker:up
 ```
 
 la aplicación estará disponible en `http://localhost:5000/users`
 
-### 3. Compilar y Ejecutar en Producción
+Si desea ver logs:
+```bash
+npm npm run docker:logs
+```
+
+y cuando desee terminar la ejecución
 
 ```bash
-npm run build
-npm start
+npm run docker:down
+```
+
+### 3. Conección a la base de datos (Opcional)
+Si desea conectarse a la base de datos para monitorear los datos en tiempo real lo puede hacer conectandose mediante un gestor como **PgAdmin** o **DbBeaver**:
+```bash
+Host: localhost
+Puerto: 5433
+Usuario: postgres
+Contraseña: root
+Base de datos: usuarios
 ```
 
 ## Endpoints Disponibles

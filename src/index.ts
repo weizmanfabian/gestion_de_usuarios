@@ -2,11 +2,13 @@ import "reflect-metadata";
 import app from './app';
 import { AppDataSource } from "./db";
 
+const PORT = 5000;
+
 function main() {
     AppDataSource.initialize()
         .then(() => {
             console.log("Database connection established successfully.");
-            app.listen(3000, () => console.log('Server is running on http://localhost:3000'));
+            app.listen(PORT, () => console.log('Server is running on http://localhost:' + PORT));
         })
         .catch((error) => console.error("Error during Data Source initialization:", error));
 }

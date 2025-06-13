@@ -50,6 +50,11 @@ git clone https://github.com/weizmanfabian/gestion_de_usuarios.git
 cd gestion_de_usuarios
 ```
 
+### 1.2 Cambiamos de rama a **docker-compose**
+```bash
+git chekout docker-compose
+```
+
 ## Instalación y Ejecución
 
 ### 1. compilar proyecto
